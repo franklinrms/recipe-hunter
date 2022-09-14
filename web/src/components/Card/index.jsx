@@ -11,10 +11,6 @@ export default function Card({
       onClick={clickCard}
       bg={thumb}
     >
-      {/* <img
-        src={thumb}
-        alt="Thumb"
-      /> */}
       { name }
     </CardContainer>
   );

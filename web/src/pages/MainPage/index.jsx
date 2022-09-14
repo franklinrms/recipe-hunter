@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getRecipes } from '../../lib/api';
 import Loading from '../../components/Loading';
 import Card from '../../components/Card';
+import CardsContainer from './style';
 
 export default function MainPage({ type }) {
   const [recipes, setRecipes] = useState(null);
@@ -20,7 +21,7 @@ export default function MainPage({ type }) {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <CardsContainer>
       {
         recipes.map((recipe) => (
           <Card
@@ -32,7 +33,7 @@ export default function MainPage({ type }) {
         ))
     }
 
-    </div>
+    </CardsContainer>
   );
 }
 MainPage.propTypes = {
