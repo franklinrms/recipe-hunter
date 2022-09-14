@@ -4,7 +4,7 @@ const theme = {
     background: '#0C1015',
 
     surface_primary: '#141921',
-    surface_secondary: '#27272A',
+    surface_secondary: '20, 25, 33, 0.8',
 
     text_primary: '#F2F2F2',
     text_secondary: '#B6BBC7',

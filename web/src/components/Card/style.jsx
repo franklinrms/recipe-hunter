@@ -24,7 +24,7 @@ const CardContainer = styled.button`
         height: 300px;
         left: 0;
         top: 0;
-        opacity: .2;
+        opacity: .3;
         z-index: -1;
     }
     

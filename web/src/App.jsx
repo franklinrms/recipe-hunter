@@ -7,6 +7,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/foods" />} />
       <Route path="/foods" element={<MainPage type="meal" />} />
+      <Route path="/drinks" element={<MainPage type="cocktail" />} />
     </Routes>
   );
 }

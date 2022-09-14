@@ -4,6 +4,7 @@ import { getRecipes } from '../../lib/api';
 import Loading from '../../components/Loading';
 import Card from '../../components/Card';
 import CardsContainer from './style';
+import NavBar from '../../components/NavBar';
 
 export default function MainPage({ type }) {
   const [recipes, setRecipes] = useState(null);
@@ -14,26 +15,29 @@ export default function MainPage({ type }) {
       setRecipes(response);
     };
     fetchAllRecipes();
-  }, []);
+  });
 
   if (!recipes) {
     return <Loading />;
   }
 
   return (
-    <CardsContainer>
-      {
-        recipes.map((recipe) => (
-          <Card
-            key={recipe.idMeal || recipe.idDrink}
-            name={recipe.strMeal || recipe.strDrink}
-            thumb={recipe.strMealThumb || recipe.strDrinkThumb}
-            clickCard={() => {}}
-          />
-        ))
-    }
+    <div style={{ display: 'flex' }}>
+      <NavBar />
 
-    </CardsContainer>
+      <CardsContainer>
+        {
+            recipes.map((recipe) => (
+              <Card
+                key={recipe.idMeal || recipe.idDrink}
+                name={recipe.strMeal || recipe.strDrink}
+                thumb={recipe.strMealThumb || recipe.strDrinkThumb}
+                clickCard={() => {}}
+              />
+            ))
+        }
+      </CardsContainer>
+    </div>
   );
 }
 MainPage.propTypes = {
