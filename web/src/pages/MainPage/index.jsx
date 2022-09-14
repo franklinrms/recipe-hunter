@@ -8,26 +8,28 @@ import NavBar from '../../components/NavBar';
 
 export default function MainPage({ type }) {
   const [recipes, setRecipes] = useState(null);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     const fetchAllRecipes = async () => {
+      setIsFetching(true);
       const response = await getRecipes(type, 'name');
       setRecipes(response);
+      setIsFetching(false);
     };
     fetchAllRecipes();
-  });
-
-  if (!recipes) {
-    return <Loading />;
-  }
+  }, [type]);
 
   return (
     <div style={{ display: 'flex' }}>
       <NavBar />
 
-      <CardsContainer>
-        {
-            recipes.map((recipe) => (
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <CardsContainer>
+          {
+            recipes && recipes.map((recipe) => (
               <Card
                 key={recipe.idMeal || recipe.idDrink}
                 name={recipe.strMeal || recipe.strDrink}
@@ -36,7 +38,8 @@ export default function MainPage({ type }) {
               />
             ))
         }
-      </CardsContainer>
+        </CardsContainer>
+      )}
     </div>
   );
 }

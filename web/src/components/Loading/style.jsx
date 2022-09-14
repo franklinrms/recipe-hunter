@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import theme from '../../style/theme';
 
 const LoadingContainer = styled.span`
-    width: 100%;
-    height: 50vh;
+    position: relative;
+    left: 5%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
