@@ -3,7 +3,7 @@ const theme = {
     brand: '#D62D51',
     background: '#0C1015',
 
-    surface_primary: '#18181B',
+    surface_primary: '#141921',
     surface_secondary: '#27272A',
 
     text_primary: '#F2F2F2',
