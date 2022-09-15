@@ -5,6 +5,7 @@ import Loading from '../../components/Loading';
 import Card from '../../components/Card';
 import CardsContainer from './style';
 import NavBar from '../../components/NavBar';
+import Header from '../../components/Header';
 
 export default function MainPage({ type }) {
   const [recipes, setRecipes] = useState(null);
@@ -21,14 +22,16 @@ export default function MainPage({ type }) {
   }, [type]);
 
   return (
-    <div style={{ display: 'flex' }}>
+    <>
+      <Header />
       <NavBar />
+      <div style={{ display: 'flex', position: 'relative', top: '90px' }}>
 
-      {isFetching ? (
-        <Loading />
-      ) : (
-        <CardsContainer>
-          {
+        {isFetching ? (
+          <Loading />
+        ) : (
+          <CardsContainer>
+            {
             recipes && recipes.map((recipe) => (
               <Card
                 key={recipe.idMeal || recipe.idDrink}
@@ -38,9 +41,10 @@ export default function MainPage({ type }) {
               />
             ))
         }
-        </CardsContainer>
-      )}
-    </div>
+          </CardsContainer>
+        )}
+      </div>
+    </>
   );
 }
 MainPage.propTypes = {

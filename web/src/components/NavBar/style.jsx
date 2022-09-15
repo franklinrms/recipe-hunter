@@ -4,16 +4,17 @@ import theme from '../../style/theme';
 export const Menu = styled.div`
     position: fixed;
     background-color: ${theme.colors.surface_primary};
-    height: 100vh;
+    height:  calc(100vh - 90px);
+    bottom: 0;
     width: 15%;
     background: rgba(${theme.colors.surface_secondary});
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.5px);
     -webkit-backdrop-filter: blur(6.5px);
     z-index: 100;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    padding-top: 50px;
 
     @media (max-width: 850px) {
         padding: 10px;
@@ -21,10 +22,8 @@ export const Menu = styled.div`
         flex-direction: row;
         height: 70px;
         width: 100%;
-        bottom: 0;
 
     }
-
 `;
 
 export const ItemMenu = styled.button`
