@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import theme from '../../style/theme';
 
 const LoadingContainer = styled.span`
+    height: calc(100vh - 90px);
+    width: 85%;
     position: relative;
-    left: 5%;
-    height: 100vh;
+    left: 15%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
     i {
         font-size: 72px;
         color: ${theme.colors.text_on_brand_color};

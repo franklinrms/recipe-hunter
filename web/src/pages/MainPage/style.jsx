@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CardsContainer = styled.div`
+export const CardsContainer = styled.div`
     width: 85%;
     position: relative;
     left: 15%;
@@ -17,4 +17,21 @@ const CardsContainer = styled.div`
     }
 `;
 
-export default CardsContainer;
+export const TabsContainer = styled.div`
+    width: 85%;
+    position: relative;
+    left: 15%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    @media (max-width: 850px) {
+        left: 0;
+        width: 100%;
+        padding: 10px 0 0 10px;
+        justify-content: flex-start;
+    }
+`;
