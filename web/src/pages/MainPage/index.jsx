@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getRecipes } from '../../lib/api';
 import Loading from '../../components/Loading';
 import Card from '../../components/Card';
@@ -13,6 +14,9 @@ export default function MainPage({ type }) {
   const [categories, setCategories] = useState(null);
   const [selected, setSelected] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
+
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const fetchAllRecipes = async () => {
@@ -63,7 +67,7 @@ export default function MainPage({ type }) {
                     key={recipe.idMeal || recipe.idDrink}
                     name={recipe.strMeal || recipe.strDrink}
                     thumb={recipe.strMealThumb || recipe.strDrinkThumb}
-                    clickCard={() => {}}
+                    clickCard={() => navigate(`${pathname}/${recipe.idMeal || recipe.idDrink}`)}
                   />
                 ))
                 }
