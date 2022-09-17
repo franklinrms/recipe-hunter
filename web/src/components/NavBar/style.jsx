@@ -18,11 +18,11 @@ export const Menu = styled.div`
 
     @media (max-width: 850px) {
         padding: 10px;
+        justify-content: space-evenly;
         align-items: center;
         flex-direction: row;
         height: 70px;
         width: 100%;
-
     }
 `;
 

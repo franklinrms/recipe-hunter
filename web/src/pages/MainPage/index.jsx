@@ -7,6 +7,7 @@ import { CardsContainer, TabsContainer } from './style';
 import NavBar from '../../components/NavBar';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
+import SearchBar from '../../components/SearchBar';
 
 export default function MainPage({ type }) {
   const [recipes, setRecipes] = useState(null);
@@ -41,8 +42,8 @@ export default function MainPage({ type }) {
     <>
       <Header />
       <NavBar />
+      <SearchBar type={type} onSearch={setRecipes} isFetching={setIsFetching} />
       <div style={{ position: 'relative', top: '90px' }}>
-
         {isFetching ? (
           <Loading />
         ) : (

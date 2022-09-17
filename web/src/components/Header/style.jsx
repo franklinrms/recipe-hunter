@@ -21,12 +21,16 @@ export const HeaderContainer = styled.header`
 
     @media (max-width: 600px) {
         justify-content: space-around;
+
+        div {
+            display: none;
+        }
     }
 `;
 
 export const Logo = styled.img`
     position: relative;
-    left: 50px;
+    left: 60px;
     width: 120px;
 
     @media (max-width: 600px) {

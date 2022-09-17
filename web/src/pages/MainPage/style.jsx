@@ -28,6 +28,10 @@ export const TabsContainer = styled.div`
     overflow-x: auto;
     overflow-y: hidden;
 
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
     @media (max-width: 850px) {
         left: 0;
         width: 100%;

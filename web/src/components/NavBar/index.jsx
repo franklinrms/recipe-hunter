@@ -23,6 +23,7 @@ export default function NavBar() {
         type="button"
         onClick={() => handleClick('explore')}
         isSelected={selected === 'explore'}
+        disabled
       >
         <i className="bx bx-compass bx-tada-hover" />
         Explore
@@ -50,6 +51,7 @@ export default function NavBar() {
         type="button"
         onClick={() => handleClick('profile')}
         isSelected={selected === 'profile'}
+        disabled
       >
         <i className="bx bxs-user bx-tada-hover" />
         Profile
