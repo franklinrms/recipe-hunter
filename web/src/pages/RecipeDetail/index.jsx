@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Loading from '../../components/Loading';
 import NavBar from '../../components/NavBar';
 import { getRecipes } from '../../lib/api';
+import { Container, ContainerDetails, ContainerHeader } from './style';
 
 export default function RecipeDetail() {
   const [recipe, setRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
   const { pathname } = useLocation();
+
   const type = pathname.split('/')[1] === 'foods' ? 'meal' : 'cocktail';
   const recipeId = pathname.replace(/[^0-9]/g, '');
+  const pathVideo = recipe.strYoutube || '';
 
   useEffect(() => {
+    setIsFetching(true);
     const fetchRecipe = async () => {
       const data = await getRecipes(type, 'id', recipeId);
       setRecipe(data[0]);
     };
+    setIsFetching(false);
     fetchRecipe();
   }, [recipeId]);
 
@@ -41,9 +48,53 @@ export default function RecipeDetail() {
   }, [recipe]);
 
   return (
-    <div>
+    <>
       <NavBar />
+      { isFetching ? (
+        <Loading />
+      ) : (
 
-    </div>
+        <Container>
+          <ContainerHeader bg={recipe.strMealThumb || recipe.strDrinkThumb}>
+            <div>
+              <span>
+                <h1>{recipe.strMeal || recipe.strDrink}</h1>
+                <h2>{recipe.strCategory || recipe.strAlcoholic}</h2>
+              </span>
+              <i className="bx bxs-heart" />
+            </div>
+          </ContainerHeader>
+          <ContainerDetails>
+            <h3>Ingredients</h3>
+            <ul>
+              {ingredients.map((ingredient, index) => (
+                <li key={`${ingredient}${index + 1}`}>
+                  {`${ingredient} - ${measures[index]}`}
+                </li>
+              ))}
+            </ul>
+
+            <h3>Instructions</h3>
+            <p>
+              {recipe.strInstructions}
+            </p>
+
+            <br />
+            <br />
+
+            {
+                pathVideo && (
+                <iframe
+                  src={pathVideo.replace('watch?v=', 'embed/')}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+                )
+            }
+          </ContainerDetails>
+        </Container>
+      ) }
+    </>
   );
 }
