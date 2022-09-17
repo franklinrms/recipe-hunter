@@ -4,7 +4,7 @@ import CustomButton from '../Button/style';
 
 export const SearchBarContainer = styled.div`
     position: relative;
-    top: 100px;
+    /* top: 20px; */
     width: 85%;
     left: 15%;
     display: flex;

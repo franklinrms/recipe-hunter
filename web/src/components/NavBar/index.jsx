@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ItemMenu, Menu } from './style';
+import { ItemMenu, Logo, Menu } from './style';
+import logo from '../../assets/logo.png';
 
 export default function NavBar() {
   const [selected, setSelected] = useState('');
@@ -19,6 +20,8 @@ export default function NavBar() {
 
   return (
     <Menu>
+      <Logo src={logo} alt="logo" />
+
       <ItemMenu
         type="button"
         onClick={() => handleClick('explore')}

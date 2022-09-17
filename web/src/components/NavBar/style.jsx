@@ -4,7 +4,7 @@ import theme from '../../style/theme';
 export const Menu = styled.div`
     position: fixed;
     background-color: ${theme.colors.surface_primary};
-    height:  calc(100vh - 90px);
+    height: 100vh;
     bottom: 0;
     width: 15%;
     background: rgba(${theme.colors.surface_secondary});
@@ -14,8 +14,11 @@ export const Menu = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
-    padding-top: 50px;
 
+    @media (max-width: 1024px) {
+        padding: 5px;
+    }
+    
     @media (max-width: 850px) {
         padding: 10px;
         justify-content: space-evenly;
@@ -23,6 +26,17 @@ export const Menu = styled.div`
         flex-direction: row;
         height: 70px;
         width: 100%;
+    }
+`;
+export const Logo = styled.img`
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+
+    margin-bottom: 50px;
+
+    @media (max-width: 850px) {
+        display: none;
     }
 `;
 
