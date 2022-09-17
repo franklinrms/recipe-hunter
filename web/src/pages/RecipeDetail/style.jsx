@@ -61,7 +61,7 @@ export const ContainerHeader = styled.header`
     background-size: cover;
     background-position: center;
 
-    div {
+    #Title {
         /* border: 2px solid red; */
         margin: 0 auto;
         width: 100%;

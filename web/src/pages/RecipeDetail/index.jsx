@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import LikeButton from '../../components/LikeButton';
 import Loading from '../../components/Loading';
 import NavBar from '../../components/NavBar';
 import { getRecipes } from '../../lib/api';
@@ -56,12 +57,12 @@ export default function RecipeDetail() {
 
         <Container>
           <ContainerHeader bg={recipe.strMealThumb || recipe.strDrinkThumb}>
-            <div>
+            <div id="Title">
               <span>
                 <h1>{recipe.strMeal || recipe.strDrink}</h1>
                 <h2>{recipe.strCategory || recipe.strAlcoholic}</h2>
               </span>
-              <i className="bx bxs-heart" />
+              <LikeButton />
             </div>
           </ContainerHeader>
           <ContainerDetails>
