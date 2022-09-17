@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import GoBack from '../../components/GoBack';
 import LikeButton from '../../components/LikeButton';
 import Loading from '../../components/Loading';
 import NavBar from '../../components/NavBar';
@@ -54,9 +55,9 @@ export default function RecipeDetail() {
       { isFetching ? (
         <Loading />
       ) : (
-
         <Container>
           <ContainerHeader bg={recipe.strMealThumb || recipe.strDrinkThumb}>
+            <GoBack />
             <div id="Title">
               <span>
                 <h1>{recipe.strMeal || recipe.strDrink}</h1>
