@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getRecipes } from '../../lib/api';
 import Loading from '../../components/Loading';
 import Card from '../../components/Card';
-import { CardsContainer, TabsContainer } from './style';
+import { CardsContainer, SurpriseMeButton, TabsContainer } from './style';
 import NavBar from '../../components/NavBar';
 import Button from '../../components/Button';
 import SearchBar from '../../components/SearchBar';
 
 export default function MainPage({ type }) {
   const [recipes, setRecipes] = useState(null);
+  const [random, setRandom] = useState(null);
   const [categories, setCategories] = useState(null);
   const [selected, setSelected] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
 
   const navigate = useNavigate();
-  const { pathname } = useLocation();
 
   useEffect(() => {
     const fetchAllRecipes = async () => {
       setIsFetching(true);
       const responseCategories = await getRecipes(type, 'category');
       const responseRecipes = await getRecipes(type, 'name');
+      const responseRandom = await getRecipes(type, 'random');
       setCategories(responseCategories);
       setRecipes(responseRecipes);
+      setRandom(responseRandom[0].idMeal || responseRandom[0].idDrink);
       setIsFetching(false);
     };
     fetchAllRecipes();
@@ -50,6 +52,9 @@ export default function MainPage({ type }) {
           <Loading />
         ) : (
           <>
+            <SurpriseMeButton type="button" onClick={() => navigate(random)}>
+              Surprise me!
+            </SurpriseMeButton>
             <TabsContainer>
               { categories && categories.map(({ strCategory }) => (
                 <Button
@@ -67,7 +72,7 @@ export default function MainPage({ type }) {
                     key={recipe.idMeal || recipe.idDrink}
                     name={recipe.strMeal || recipe.strDrink}
                     thumb={recipe.strMealThumb || recipe.strDrinkThumb}
-                    clickCard={() => navigate(`${pathname}/${recipe.idMeal || recipe.idDrink}`)}
+                    clickCard={() => navigate(`${recipe.idMeal || recipe.idDrink}`)}
                   />
                 ))
                 }
